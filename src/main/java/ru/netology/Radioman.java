@@ -1,12 +1,16 @@
 package ru.netology;
 
 public class Radioman {
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
     private int currentVolume;
     private int minChannel = 0;
     private int maxChannel = 9;
     private int currentChannel;
+
+    public Radioman(int maxChannel) {
+        this.maxChannel = maxChannel;
+    }
 
     public void volumeUp() {
         if (currentVolume < maxVolume) {
@@ -43,27 +47,15 @@ public class Radioman {
         currentChannel = maxChannel;
     }
 
-    public int getMaxVolume() {
-        return maxVolume;
-    }
 
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(int minVolume) {
-        this.minVolume = minVolume;
-    }
-
-    public int getCurrentVolume() {
+       public int getCurrentVolume() {
         return currentVolume;
     }
 
     public int setCurrentVolume(int currentVolume) {
+        if (currentVolume>maxVolume){
+            return currentVolume;
+        }
         if (currentVolume == maxVolume) {
             currentVolume = maxVolume;
         }
@@ -74,21 +66,6 @@ public class Radioman {
         return currentVolume;
     }
 
-    public int getMinChannel() {
-        return minChannel;
-    }
-
-    public void setMinChannel(int minChannel) {
-        this.minChannel = minChannel;
-    }
-
-    public int getMaxChannel() {
-        return maxChannel;
-    }
-
-    public void setMaxChannel(int maxChannel) {
-        this.maxChannel = maxChannel;
-    }
 
     public int getCurrentChannel() {
         return currentChannel;

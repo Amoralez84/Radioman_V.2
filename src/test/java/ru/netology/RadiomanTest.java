@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadiomanTest {
-    Radioman radioman = new Radioman();
+    Radioman radioman = new Radioman(13);
+
     @Test
     public void shouldChangeVolume() {
 
         assertEquals(0, radioman.getCurrentVolume());
-        radioman.setCurrentVolume(7);
-        assertEquals(7, radioman.getCurrentVolume());
+        radioman.setCurrentVolume(56);
+        assertEquals(56, radioman.getCurrentVolume());
     }
 
     @Test
@@ -28,10 +29,10 @@ class RadiomanTest {
     public void shouldChangeUpMaxVolume() {
 
         assertEquals(0, radioman.getCurrentVolume());
-        radioman.setCurrentVolume(10);
-        assertEquals(10, radioman.getCurrentVolume());
+        radioman.setCurrentVolume(100);
+        assertEquals(100, radioman.getCurrentVolume());
         radioman.volumeUp();
-        assertEquals(10, radioman.getCurrentVolume());
+        assertEquals(100, radioman.getCurrentVolume());
     }
 
     @Test
@@ -42,67 +43,22 @@ class RadiomanTest {
         assertEquals(4, radioman.getCurrentChannel());
     }
 
-    @Test
-    public void shouldChangeUnderMinChannel() {
-
-        assertEquals(0, radioman.getCurrentChannel());
-        radioman.setMinChannel(0);
-        assertEquals(0, radioman.getMinChannel());
-        radioman.channelDown();
-        assertEquals(9, radioman.getCurrentChannel());
-
-    }
 
     @Test
     public void shouldChangeUpMaxChannel() {
 
         assertEquals(0, radioman.getCurrentChannel());
-        radioman.setCurrentChannel(9);
-        assertEquals(9, radioman.getCurrentChannel());
+        radioman.setCurrentChannel(13);
+        assertEquals(13, radioman.getCurrentChannel());
         radioman.channelUp();
         assertEquals(0, radioman.getCurrentChannel());
     }
 
-    @Test
-    public void shouldChangeMaxVolume() {
-
-        assertEquals(0, radioman.getCurrentVolume());
-        radioman.setMaxVolume(10);
-        assertEquals(10, radioman.getMaxVolume());
-    }
-
-    @Test
-    public void shouldChangeMinVolume() {
-
-        assertEquals(0, radioman.getCurrentVolume());
-        radioman.setCurrentVolume(6);
-        assertEquals(6, radioman.getCurrentVolume());
-        radioman.setMinVolume(0);
-        assertEquals(0, radioman.getMinVolume());
-    }
-
-    @Test
-    public void shouldChangeMaxChannel() {
-
-        assertEquals(0, radioman.getCurrentChannel());
-        radioman.setMaxChannel(9);
-        assertEquals(9, radioman.getMaxChannel());
-    }
-
-    @Test
-    public void shouldChangeMinChannel() {
-
-        assertEquals(0, radioman.getCurrentChannel());
-        radioman.setCurrentChannel(4);
-        assertEquals(4, radioman.getCurrentChannel());
-        radioman.setMinChannel(0);
-        assertEquals(0, radioman.getMinChannel());
-    }
 
     @Test
     public void shouldChangeVolumeUp() {
 
-        assertEquals(0, radioman.getMinVolume());
+        assertEquals(0, radioman.getCurrentVolume());
         radioman.volumeUp();
         assertEquals(1, radioman.getCurrentVolume());
     }
@@ -121,11 +77,10 @@ class RadiomanTest {
     public void shouldChangeChannelUp() {
 
         assertEquals(0, radioman.getCurrentChannel());
-        radioman.setCurrentChannel(8);
-        assertEquals(8, radioman.getCurrentChannel());
+        radioman.setCurrentChannel(12);
+        assertEquals(12, radioman.getCurrentChannel());
         radioman.channelUp();
-        assertEquals(9, radioman.getCurrentChannel());
-        radioman.setCurrentChannel(9);
+        assertEquals(13, radioman.getCurrentChannel());
 
     }
 
@@ -137,15 +92,22 @@ class RadiomanTest {
         assertEquals(1, radioman.getCurrentChannel());
         radioman.channelDown();
         assertEquals(0, radioman.getCurrentChannel());
+        radioman.channelDown();
+        assertEquals(13, radioman.getCurrentChannel());
     }
 
     @Test
     public void shouldUpMaxChannel() {
 
         assertEquals(0, radioman.getCurrentChannel());
-        radioman.setCurrentChannel(10);
+        radioman.setCurrentChannel(14);
         assertEquals(0, radioman.getCurrentChannel());
-
     }
 
+    @Test
+    public void shouldUpMaxVolume(){
+        assertEquals(0, radioman.getCurrentVolume());
+        radioman.setCurrentVolume(101);
+        assertEquals(0, radioman.getCurrentVolume());
+    }
 }
